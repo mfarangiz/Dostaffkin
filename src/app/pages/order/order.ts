@@ -1,10 +1,9 @@
-import { Component, signal, ɵɵdeferPrefetchOnViewport } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { Header } from '../../header/header';
-import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DELIVERY_SIZES, DELIVERY_SPEEDS } from './order.config';
-import { ReactiveFormsModule } from '@angular/forms';
 import { UpperCasePipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 declare var ymaps: any;
 
@@ -22,7 +21,7 @@ export class Order {
     private mapRoute: any;
 
     public routeForm!: FormGroup;
-    public orderForm: FormGroup | undefined;
+    public orderForm!: FormGroup;
 
     public orderId: any = signal(null);
     public calculationResult: any = signal(null);
@@ -33,6 +32,11 @@ constructor(private formBuilder: FormBuilder) {
         to: ['', Validators.required],
         size: ['xs', Validators.required],
         speed: ['regular', Validators.required]
+    });
+    this.orderForm = this.formBuilder.group({
+        name: ['', Validators.required],
+        phone: ['', Validators.required],
+        comment: ['']
     });
 }
 ngOnInit() {
@@ -123,7 +127,7 @@ public submitOrder() {
             return;
         }
 
-        if (this.orderForm.invalid) {
+        if (this.orderForm. invalid) {
             alert('Введите имя и корректный телефон');
             return;
         }

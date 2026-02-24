@@ -1,11 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { Header } from '../../header/header';
-import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-track',
-  imports: [Header, RouterLink, FormsModule],
+  imports: [Header, FormsModule],
   templateUrl: './track.html',
   styleUrl: './track.css',
 })
